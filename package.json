@@ -1,7 +1,7 @@
 {
   "name": "set-query-string",
   "description": "Updates/sets the browser's query string in place without adding to browser history.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Henrik Joreteg <henrik@joreteg.com>",
   "bugs": {
     "url": "https://github.com/HenrikJoreteg/set-query-string/issues"
