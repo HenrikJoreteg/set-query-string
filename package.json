@@ -24,6 +24,6 @@
     "prepublish": "npm test"
   },
   "dependencies": {
-    "qs": "^3.1.0"
+    "query-string": "^2.3.0"
   }
 }

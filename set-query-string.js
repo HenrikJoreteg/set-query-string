@@ -1,4 +1,4 @@
-var qs = require('qs')
+var qs = require('query-string')
 var replaceState = window && window.history && window.history.replaceState
 var pushState = window && window.history && window.history.pushState
 
@@ -15,14 +15,20 @@ if (!replaceState) {
     // history function to use
     var historyFunc = options.pushState ? pushState : replaceState
     // the new query object, (we start with existing if not `clear:true`)
-    var queryObj = clear ? {} : qs.parse(window.location.search.slice(1), options)
+    var queryObj = clear ? {} : qs.parse(window.location.search)
     var newString
 
     if (!isEmpty && !isString) {
       for (var key in newQuery) {
-        queryObj[key] = newQuery[key]
+        var value = newQuery[key]
+        // delete new falsy values, except number 0
+        if (!value && value !== 0) {
+          delete queryObj[key]
+        } else {
+          queryObj[key] = newQuery[key]
+        }
       }
-      newString = qs.stringify(queryObj, options)
+      newString = qs.stringify(queryObj)
     } else {
       newString = newQuery || ''
     }

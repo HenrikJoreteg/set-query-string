@@ -6,7 +6,7 @@ This module uses HTML5's [`history.replaceState`](https://developer.mozilla.org/
 
 If not supported in your browser it's just a no-op.
 
-This is just a thin wrapper on top of the awesome [`qs`](https://www.npmjs.com/package/qs) module, so any options you pass that aren't for this module just get passed through as options to `qs`.
+This is just a thin wrapper on top of the awesome and tiny [`query-string`](https://www.npmjs.com/package/query-string) module.
 
 ## Why would you want this? 
 
@@ -58,24 +58,45 @@ setQuery({other: 'value'}, {clear: true})
 // to it, just pass a `pushState: true` option
 setQuery({other: 'value'}, {pushState: true})
 
-// setting values to `undefined` removes that key
+// setting values to anything falsy other than `0` removes that key
 // from the query entirely.
 // if there's no keys left, the `?` is removed too
 // before: `example.com?other=something`
+// these are all the same
+setQuery({other: ''})
 setQuery({other: undefined})
+setQuery({other: null})
 // after: `example.com`
 
 // if for some reason you want to encode the string yourself
 // go for it, just pass it a string instead of an object
 var myQueryString = '?im-special=yup'
 // this works too, if you really want it (always replaces the entire query string)
+// it ignores leading `?` if you include it, so it's safe to do it either way
 setQuery(myQueryString)
 
 ```
 
-## encoding options
+## binding to model property
 
-This is just a thin wrapper on top of [`qs`](https://www.npmjs.com/package/qs) so the options object just gets passed straight through to `qs`.
+If you happen to be using something like [ampersand-state](http://ampersandjs.com/docs#ampersand-state) you can use this module to easily bind a model property to a certain query paramater quite easily:
+
+```javascript
+import State from 'ampersand-state'
+import setQuery from 'set-query-string'
+
+export default State.extend({
+  initialize () {
+    // bind `query` property to browser URL query
+    this.on('change:query', (model) => setQuery({query: model.query}))
+  },
+
+  session: {
+    query: 'string'
+  }
+})
+
+```
 
 ## tests? 
 
@@ -84,6 +105,11 @@ Works well in the apps I use it in. I'd happily take a PR that added some but it
 ## credits
 
 If you like this follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) on twitter.
+
+## changelog
+
+- `2.0.0`: use smaller, simpler `query-string` instead of `qs`
+- `1.0.0`: initial release
 
 ## license
 
