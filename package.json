@@ -1,0 +1,29 @@
+{
+  "name": "set-query-string",
+  "description": "Updates/sets the browser's query string in place without adding to browser history.",
+  "version": "0.0.0",
+  "author": "Henrik Joreteg <henrik@joreteg.com>",
+  "bugs": {
+    "url": "https://github.com/HenrikJoreteg/set-query-string/issues"
+  },
+  "homepage": "https://github.com/HenrikJoreteg/set-query-string#readme",
+  "keywords": [
+    "browser",
+    "pushstate",
+    "querystring",
+    "replacestate"
+  ],
+  "license": "MIT",
+  "main": "set-query-string.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenrikJoreteg/set-query-string.git"
+  },
+  "scripts": {
+    "test": "standard",
+    "prepublish": "npm test"
+  },
+  "dependencies": {
+    "qs": "^3.1.0"
+  }
+}
