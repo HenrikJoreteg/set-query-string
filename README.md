@@ -108,6 +108,7 @@ If you like this follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) on tw
 
 ## changelog
 
+- `2.1.0`: now inert if required in non browser environment
 - `2.0.0`: use smaller, simpler `query-string` instead of `qs`
 - `1.0.0`: initial release
 

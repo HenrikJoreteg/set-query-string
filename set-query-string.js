@@ -1,6 +1,11 @@
 var qs = require('query-string')
-var replaceState = window && window.history && window.history.replaceState
-var pushState = window && window.history && window.history.pushState
+var replaceState
+var pushState
+
+if (typeof window !== 'undefined') {
+  replaceState = window && window.history && window.history.replaceState
+  pushState = window && window.history && window.history.pushState
+}
 
 if (!replaceState) {
   module.exports = function () {}
