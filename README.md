@@ -8,7 +8,7 @@ If not supported in your browser it's just a no-op.
 
 This is just a thin wrapper on top of the awesome and tiny [`query-string`](https://www.npmjs.com/package/query-string) module.
 
-## Why would you want this? 
+## Why would you want this?
 
 Sometimes you want to let the user apply filters to data in your Native Web App (a.k.a. Single Page App) and still make those filters deep-linkable. So what do you do?
 
@@ -20,7 +20,7 @@ In browsers that don't support `replaceState` using this simply does nothing so 
 
 ## Why bother making it a module?
 
-Because it's nice to just be able to set an object and have it Just Work™ without having to think about installing a query string parser, etc. 
+Because it's nice to just be able to set an object and have it Just Work™ without having to think about installing a query string parser, etc.
 
 Also, this automatically URI encodes/decodes values so you can use spaces and whatnot without having to think about it.
 
@@ -35,7 +35,7 @@ npm install set-query-string
 ```javascript
 var setQuery = require('set-query-string');
 
-// the browser's URL will be updated 
+// the browser's URL will be updated
 // in place without a page refresh:
 
 // before: `example.com`
@@ -52,7 +52,7 @@ setQuery({other: 'value'})
 setQuery({other: 'value'}, {clear: true})
 // after: `example.com?other=value`
 
-// by default it uses `history.replaceState` so 
+// by default it uses `history.replaceState` so
 // the changed URL doesn't end up being part of the
 // "back" button history. If you *do* want to add
 // to it, just pass a `pushState: true` option
@@ -74,6 +74,9 @@ var myQueryString = '?im-special=yup'
 // this works too, if you really want it (always replaces the entire query string)
 // it ignores leading `?` if you include it, so it's safe to do it either way
 setQuery(myQueryString)
+
+// setting query string and adding to history state
+setQuery({other: 'value'}, {pushState: true, state: {other: 'value'}})
 
 ```
 
@@ -98,7 +101,7 @@ export default State.extend({
 
 ```
 
-## tests? 
+## tests?
 
 Works well in the apps I use it in. I'd happily take a PR that added some but it's simple enough and don't have the time right now ¯\_(ツ)_/¯
 
@@ -115,4 +118,3 @@ If you like this follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) on tw
 ## license
 
 MIT
-
