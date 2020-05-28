@@ -43,6 +43,11 @@ if (!replaceState) {
       newString = '?' + newString
     }
 
-    historyFunc.call(window.history, options.state || window.history.state, '', window.location.pathname + (newString || ''))
+    historyFunc.call(
+      window.history, 
+      options.state || window.history.state, 
+      '', 
+      window.location.pathname + (newString || '') + window.location.hash
+    )
   }
 }
